@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/icons/Menu';
@@ -10,6 +11,7 @@ import MoreVert from '@material-ui/icons/MoreVert';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Search from '@material-ui/icons/Search';
 import Keyboard from '@material-ui/icons/Keyboard';
+import SearchSharp from '@material-ui/icons/SearchSharp';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -74,38 +76,47 @@ function Toolbar(props) {
                 </IconButton>
                 <a href="/"><img src="/images/preto.png" className={ classes.img } /></a>
             </div>
-            <div className={ classes.search } >
-                <input id='search' type="search" placeholder="Pesquisar" className={ classes.input }/>
-                <IconButton><Keyboard /></IconButton>
-                <label for='search'>
-                    <Button 
-                        size="small" 
-                        variant="contained" 
-                        style={{border: 'inherit'}} 
-                        className={ classes.btn } 
-                    >
-                        <Search className={ classes.iconSearch } />
-                    </Button>
-                </label>
-            </div>
-            <div>
-                <IconButton>
-                    <VideoCall />
-                </IconButton>                
-                <IconButton>
-                    <AppsIcon />
-                </IconButton>                
-                <IconButton>
-                    <MoreVert />
-                </IconButton>
-                <Button 
-                    variant="outlined" 
-                    color="secondary" 
-                    startIcon={<AccountCircle />}
-                >
-                    FAZER LOGIN
+            <Hidden mdDown>
+                <div className={ classes.search } >
+                    <input id='search' type="search" placeholder="Pesquisar" className={ classes.input }/>
+                    <IconButton><Keyboard /></IconButton>
+                    <label htmlFor='search'>
+                        <Button 
+                            size="small" 
+                            variant="contained" 
+                            style={{border: 'inherit'}} 
+                            className={ classes.btn } 
+                        >
+                            <Search className={ classes.iconSearch } />
+                        </Button>
+                    </label>
+                </div>
+            </Hidden>
+            <Hidden mdUp >
+                <Button>
+                    <SearchSharp />
                 </Button>
-            </div>
+            </Hidden>
+            <Hidden smDown>
+                <div>
+                    <IconButton>
+                        <VideoCall />
+                    </IconButton>                
+                    <IconButton>
+                        <AppsIcon />
+                    </IconButton>                
+                    <IconButton>
+                        <MoreVert />
+                    </IconButton>
+                    <Button 
+                        variant="outlined" 
+                        color="secondary" 
+                        startIcon={<AccountCircle />}
+                    >
+                        FAZER LOGIN
+                    </Button>
+                </div>
+            </Hidden>
         </AppBar>
     )
 }
