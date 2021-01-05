@@ -8,16 +8,19 @@ import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-
+  root: { 
+    backgroundColor: theme.palette.background.dark,
+  }
 }));
 
 
 export default function Area(props) {
+    const classes = useStyles();
 
     return (
-        <div>
+        <div className={ classes.root }>
             <Toolbar />
-            <Grid container style={{ padding: 10 }}>
+            <Grid container style={{ padding: 10 }} >
                 {props.video.map((item, index) => (
                     <Grid item lg={3} md={4} sm={6} xs={12}>
                         <Box p={1} style={{ marginBottom: 30 }}>
@@ -53,13 +56,11 @@ export default function Area(props) {
                                     </Typography>
                                 </Box>
                             </Box>
-
                         </Box>
-
                     </Grid>
                 ))}
             </Grid>
-            <Divider />
+
         </div>
 
     )

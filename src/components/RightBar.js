@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     },
     listItem: {
         paddingLeft: 28,
-        color: 'black',
     },
     login: {
         padding: 30,
